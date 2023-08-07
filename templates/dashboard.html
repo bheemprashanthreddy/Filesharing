@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3>File Sharing Dashboard</h3>
+                </div>
+                <div class="card-body">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file">Choose a File</label>
+                            <input type="file" class="form-control" id="file" name="file" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emails">Share with Email Addresses (comma-separated)</label>
+                            <input type="text" class="form-control" id="emails" name="emails" placeholder="Enter up to 5 email addresses">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Upload & Share</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
